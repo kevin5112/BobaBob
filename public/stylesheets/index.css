@@ -1,0 +1,50 @@
+body, html {
+	height: 100%;
+}
+
+.bg {
+	/* Image being used */
+	background-image: url("https://imbibemagazine.com/wp-content/uploads/2017/06/boba-guys-drinks1-crdt-carolyn-fong.jpg");
+
+	/* Full height */
+	height: 100%;
+
+	/* transparent */
+	opacity: 0.65;
+
+	/* Center and scale the image */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.caption {
+	position: absolute;
+	left: 0;
+	top: 30%;
+	width: 100%;
+	text-align: center;
+}
+
+.caption span.title {
+	background-color: #111;
+    color: #fff;
+    opacity: 0.80;
+    padding: 18px;
+    font-size: 40px;
+    letter-spacing: 10px;
+    font: 400 "Lato", sans-serif;
+}
+
+.searchForm {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 100%;
+	text-align: center;
+}
+
+.searchForm .searchBar {
+	margin: auto;
+	max-width: 30%;
+}
