@@ -2,9 +2,11 @@
 
 <h1>Shops page</h1>
 <% shops.forEach(function(shop){ %>
-    <li>
-      <%= shop.name %>
-    </li>
+    <div>
+      <h4><%= shop.name %></h4>
+      <img src="stylesheets/images/<%= shop.image %>" alt="shop_image" width="420" height="420">
+      <h2><%= shop.description %></h2>
+    </div>
 <% }) %>
 
 
