@@ -10,8 +10,8 @@ app.get("/", function(req, res) {
 	res.render("index")
 })
 
-app.get("/display", function(req, res){
-   res.render("display")
+app.get("/shops", function(req, res){
+   res.render("shops")
 })
 
 app.listen(port, function(){
