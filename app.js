@@ -8,8 +8,8 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 var port = 3000;
 var shops = [
-   {name: "Sharetea", image: "Sharetea_logo.png", description: "500 teahouses in 15 countries that import their authentic tea leaves from Taiwan. Stop by a location today and sip share love!"},
-   {name: "Kung Fu Tea", image: "KungFuTea_logo.png", description: "Welcome to Kung Fu Tea's Fresh - Innovative - Fearless world of bubble tea (boba) and other tasty, refreshing beverages."}
+   {name: "Sharetea", image: "Sharetea_logo.png", description: "500 teahouses in 15 countries that import their authentic tea leaves from Taiwan. Stop by a location today and sip share love!", phone: "(714) 736-3948", address: "123 N Gilbert Lane"},
+   {name: "Kung Fu Tea", image: "KungFuTea_logo.png", description: "Welcome to Kung Fu Tea's Fresh - Innovative - Fearless world of bubble tea (boba) and other tasty, refreshing beverages.", phone: "(714) 736-3948", address: "123 N Gilbert Lane"}
 ]
 
 app.get("/", function(req, res) {

@@ -1,39 +1,51 @@
 <% include ./partials/header %>
 
 <div class="container">
-<%# We need these breaks because the header is broken %>
-<br>
-<br>
-<br>
-<br>
-  <header class="jumbotron">
-    <h1>Boba shops in this area</h1>
-    <p>Checkout some of these awesome local boba hotspots</p>
-      
-    <%# This will eventually be in the business page %>
-    <p>
-      <a class="btn btn-primary btn-lrg" href="/shops/new">Add New Shop</a>
-    </p>
-  </header>
 
-  <div class="album py-5 bg-light">
+  <br>
+  <br>
+  <br>
+
+  <p>California . Fullerton               Search Bar</p>
+  <hr>
+
+  <br>
+  <br>
+
+  <div class="container">
+    <img src="stylesheets/images/boba-hero.png" class="img-fluid">
+    <div class="centered">Boba shops near Fullerton, California</div>
+  </div>
+
+  <div class="container">
     <% shops.forEach(function(shop){ %>
         <div class="container">
-          <div class="row">
+          <div class="row down">
+              <div class="col-md-2 col-md-offset-2"></div>
+            <div class="col-md-6"><hr/></div>
+          </div>
+          <div class="row"> 
             <div class="col-md-2">
               <img src="stylesheets/images/<%= shop.image %>" class="img-fluid">
             </div>
             <div class="col-md-6">
             <h4> <%= shop.name %> </h4>
             <p> <%= shop.description %> </p>
+            <h5> Phone: <%= shop.phone %> </h5>
+            <h5> Address: <%= shop.address %> </h5>
             </div>
           </div>
-          <hr/>
         </div>
     <% }) %>
   </div>
 
 
 </div>
+
+
+<%# This will eventually be in the business page %>
+    <p>
+      <a class="btn btn-primary btn-lrg" href="/shops/new">Add New Shop</a>
+    </p>
 
 <% include ./partials/footer %>
