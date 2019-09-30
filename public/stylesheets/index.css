@@ -59,3 +59,11 @@ body, html {
 .down {
 	margin-top: 25px;
 }
+
+.viewAllButton {
+	position: absolute;
+	top: 80%;
+	right: 0;
+	text-align: center;
+	margin: 30px;
+}
