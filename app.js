@@ -31,7 +31,9 @@ app.post("/shops", function(req, res){
    var name = req.body.name
    var image = req.body.image
    var description = req.body.description
-   var newShop = {name: name, image: image, description: description}
+   var phone = req.body.phone
+   var address = req.body.address
+   var newShop = {name: name, image: image, description: description, phone: phone, address: address}
 
    shops.push(newShop)
 
