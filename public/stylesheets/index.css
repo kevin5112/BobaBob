@@ -48,3 +48,14 @@ body, html {
 	margin: auto;
 	max-width: 30%;
 }
+
+.centered {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  }
+
+.down {
+	margin-top: 25px;
+}
