@@ -63,7 +63,7 @@ function bm(file, dataToMatch){
       return dataAsString === dataToMatch
    })
    .catch(err => {
-      console.log(err)
+      //console.log(err)
       return false
    })
 }
@@ -89,23 +89,23 @@ function wdtf(file, data)
 {
    fs.promises.mkdir(gd(file), {recursive: true}).then(() => {
       fs.promises.writeFile(file, data).then(() => {
-         console.log("Success.")
+         //console.log("Success.")
       })
       .catch(err => {
-         console.log(err)
+         //console.log(err)
       })
    }).catch(err => {
       if(err.code === 'EEXIST')
       {
          fs.promises.writeFile(file, data).then(() => {
-               console.log("Success.")
+               //console.log("Success.")
          })
          .catch(err => {
-               console.log(err)
+               //console.log(err)
          })
       }
       else {
-         console.log(err)
+         //console.log(err)
       }
    })
 } 
