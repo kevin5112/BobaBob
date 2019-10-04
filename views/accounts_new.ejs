@@ -1,0 +1,14 @@
+<% include partials/header %>
+
+<h1>Create a new account</h1>
+
+<form action="/accounts" method="POST">
+    <input type="text" name="username" placeholder="username">
+    <input type="password" name="password" placeholder="password">
+    <input type="email" name="email" placeholder="email">
+
+    <button>Submit</button>
+</form>
+
+<a href="/">Home</a>
+<% include partials/footer %>

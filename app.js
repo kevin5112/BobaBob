@@ -20,6 +20,10 @@ app.get("/", function(req, res) {
    cryptMod.setup()
 })
 
+app.get("/accounts/new", function(req, res){
+   res.render("accounts_new.ejs")
+})
+
 app.get("/shops", function(req, res){
    res.render("shops", {shops:shops})
 })
